@@ -1,0 +1,17 @@
+﻿@if (isVisible)
+{
+    <h3>VisibilityComponent</h3>
+}
+
+@code {
+
+    private bool isVisible = true;
+
+    public void SetVisibility()
+    {
+        // toggle visibility
+        this.isVisible = !this.isVisible;
+        StateHasChanged();
+    }
+
+}
