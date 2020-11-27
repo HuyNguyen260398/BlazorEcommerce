@@ -1,5 +1,6 @@
 ﻿using eShop.CoreBusiness.Models;
 using eShop.UseCases.PluginInterfaces.DataStore;
+using eShop.UseCases.ViewProductScreen;
 using System;
 using System.Collections.Generic;
 using System.Text;

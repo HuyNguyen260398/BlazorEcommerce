@@ -6,7 +6,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
-namespace BlazorEcommerce.DataStore.HardCoded
+namespace eShop.DataStore.HardCoded
 {
     public class ProductRepository : IProductRepository
     {
@@ -17,7 +17,7 @@ namespace BlazorEcommerce.DataStore.HardCoded
             {
                 new Product
                 {
-                    Id = 1,
+                    ProductId = 1,
                     Brand = "Lenovo",
                     Name = "Thinkpad X1 Carbon Gen 8",
                     Price = 949.99,
@@ -26,7 +26,7 @@ namespace BlazorEcommerce.DataStore.HardCoded
                 },
                 new Product
                 {
-                    Id = 2,
+                    ProductId = 2,
                     Brand = "Lenovo",
                     Name = "Thinkpad X1 Nano Gen 7",
                     Price = 949.99,
@@ -35,7 +35,7 @@ namespace BlazorEcommerce.DataStore.HardCoded
                 },
                 new Product
                 {
-                    Id = 3,
+                    ProductId = 3,
                     Brand = "Lenovo",
                     Name = "Thinkpad X1 Extreme Gen 6",
                     Price = 949.99,
@@ -44,7 +44,7 @@ namespace BlazorEcommerce.DataStore.HardCoded
                 },
                 new Product
                 {
-                    Id = 4,
+                    ProductId = 4,
                     Brand = "Lenovo",
                     Name = "Thinkpad X1 Gen 5",
                     Price = 949.99,
@@ -56,7 +56,7 @@ namespace BlazorEcommerce.DataStore.HardCoded
 
         public Product GetProduct(int id)
         {
-            return products.FirstOrDefault(x => x.Id == id);
+            return products.FirstOrDefault(x => x.ProductId == id);
         }
 
         public IEnumerable<Product> GetProducts(string filter = null)
