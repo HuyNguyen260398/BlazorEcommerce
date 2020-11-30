@@ -1,34 +1,32 @@
-﻿using eShop.UseCases.PluginInterfaces.DataStore;
+﻿using eShop.CoreBusiness.Models;
 using eShop.UseCases.PluginInterfaces.StateStore;
 using eShop.UseCases.PluginInterfaces.UI;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace eShop.UseCases.ViewProductScreen
+namespace eShop.UseCases.ShoppingCartScreen
 {
-    public class AddProductToCartUseCase : IAddProductToCartUseCase
+    public class DeleteProductUseCase : IDeleteProductUseCase
     {
-        private readonly IProductRepository productRepository;
         private readonly IShoppingCart shoppingCart;
         private readonly IShoppingCartStateStore shoppingCartStateStore;
 
-        public AddProductToCartUseCase(
-            IProductRepository productRepository,
+        public DeleteProductUseCase(
             IShoppingCart shoppingCart,
             IShoppingCartStateStore shoppingCartStateStore)
         {
-            this.productRepository = productRepository;
             this.shoppingCart = shoppingCart;
             this.shoppingCartStateStore = shoppingCartStateStore;
         }
 
-        public async void ExecuteAsync(int productId)
+        public async Task<Order> Execute(int productId)
         {
-            var product = productRepository.GetProduct(productId);
-            await shoppingCart.AddProductAsync(product);
-
+            var order = await shoppingCart.DeleteProductAsync(productId);
             shoppingCartStateStore.UpdateLineItemsCount();
+
+            return order;
         }
     }
 }
