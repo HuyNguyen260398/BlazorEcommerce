@@ -7,7 +7,7 @@ namespace eShop.UseCases.PluginInterfaces.DataStore
 {
     public interface IOrderRepository
     {
-        Order GerOrder(int id);
+        Order GetOrder(int id);
 
         Order GetOrderByUniqueId(string uniqueId);
 

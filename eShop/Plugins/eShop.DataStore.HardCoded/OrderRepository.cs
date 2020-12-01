@@ -23,7 +23,7 @@ namespace eShop.DataStore.HardCoded
             return order.OrderId.Value;
         }
 
-        public Order GerOrder(int id)
+        public Order GetOrder(int id)
         {
             return orders[id];
         }

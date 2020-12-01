@@ -8,4 +8,8 @@
     <ProjectReference Include="..\eShop.CoreBusiness\eShop.CoreBusiness.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="CustomerPortal\" />
+  </ItemGroup>
+
 </Project>
