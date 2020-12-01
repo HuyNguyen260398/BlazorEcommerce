@@ -21,6 +21,9 @@ using eShop.UseCases.PluginInterfaces.StateStore;
 using eShop.StateStore.DI;
 using eShop.CoreBusiness.Services;
 using eShop.UseCases.OrderConfirmationScreen;
+using eShop.UseCases.AdminPortal.OutStandingOrdersScreen;
+using eShop.UseCases.AdminPortal.OrderDetailScreen;
+using eShop.UseCases.AdminPortal.ProcessedOrdersScreen;
 
 namespace eShop.Web
 {
@@ -41,6 +44,7 @@ namespace eShop.Web
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
 
+            // Customer Portal
             services.AddSingleton<IProductRepository, ProductRepository>();
             services.AddSingleton<IOrderRepository, OrderRepository>();
 
@@ -56,6 +60,12 @@ namespace eShop.Web
             services.AddTransient<IPlaceOrderUseCase, PlaceOrderUseCase>();
             services.AddTransient<IOrderService, OrderService>();
             services.AddTransient<IViewOrderConfirmationUseCase, ViewOrderConfirmationUseCase>();
+
+            // Admin Portal
+            services.AddTransient<IViewOutStandingOrdersUseCase, ViewOutStandingOrdersUseCase>();
+            services.AddTransient<IViewOrderDetailUseCase, ViewOrderDetailUseCase>();
+            services.AddTransient<IProcessOrderUseCase, ProcessOrderUseCase>();
+            services.AddTransient<IViewProcessedOrdersUseCase, ViewProcessedOrdersUseCase>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

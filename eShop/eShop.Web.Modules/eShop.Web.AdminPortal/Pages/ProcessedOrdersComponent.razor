@@ -1,8 +1,9 @@
-﻿@page "/outstandingorders"
+﻿@page "/processedorders"
 
-@inject IViewOutStandingOrdersUseCase viewOutStandingOrdersUseCase
 
-<h3>Outstanding Orders</h3>
+@inject IViewProcessedOrdersUseCase viewProcessedOrdersUseCase
+
+<h3>Processed Orders</h3>
 <br />
 <OrderListComponent Orders="orders"></OrderListComponent>
 
@@ -14,7 +15,7 @@
     {
         base.OnInitialized();
 
-        orders = viewOutStandingOrdersUseCase.Execute();
+        orders = viewProcessedOrdersUseCase.Execute();
     }
 
 }
