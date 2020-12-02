@@ -1,0 +1,43 @@
+﻿@inject NavigationManager navigationManager
+
+<h3>Login</h3>
+<br />
+
+@if (loginViewModel != null)
+{
+    <EditForm Model="loginViewModel" OnValidSubmit="HandleValidSubmit" class="form-line">
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+        <ValidationSummary></ValidationSummary>
+
+        <div class="form-group">
+            <label for="name">User Name</label>
+            <InputText id="name" class="form-control" @bind-Value="loginViewModel.UserName"></InputText>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <InputText id="password" class="form-control" type="password" @bind-Value="loginViewModel.Password"></InputText>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Login</button>
+
+    </EditForm>
+}
+
+@code {
+
+    private LoginViewModel loginViewModel;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        loginViewModel = new LoginViewModel();
+    }
+
+    private void HandleValidSubmit()
+    {
+        navigationManager.NavigateTo($"/authenticate?usr={loginViewModel.UserName}&pwd={loginViewModel.Password}", true); // set forceLoad = true to reload from the server side
+    }
+
+}
