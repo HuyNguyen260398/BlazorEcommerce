@@ -1,4 +1,5 @@
-using eShop.DataStore.HardCoded;
+//using eShop.DataStore.HardCoded;
+using eShop.DataStore.SQL.Dapper;
 using eShop.UseCases.PluginInterfaces.DataStore;
 using eShop.UseCases.PluginInterfaces.UI;
 using eShop.UseCases.SearchProductScreen;
@@ -24,6 +25,7 @@ using eShop.UseCases.OrderConfirmationScreen;
 using eShop.UseCases.AdminPortal.OutStandingOrdersScreen;
 using eShop.UseCases.AdminPortal.OrderDetailScreen;
 using eShop.UseCases.AdminPortal.ProcessedOrdersScreen;
+using eShop.DataStore.SQL.Dapper.Helpers;
 
 namespace eShop.Web
 {
@@ -55,11 +57,15 @@ namespace eShop.Web
             services.AddSingleton<WeatherForecastService>();
 
             // Customer Portal
-            services.AddSingleton<IProductRepository, ProductRepository>();
-            services.AddSingleton<IOrderRepository, OrderRepository>();
+            //services.AddSingleton<IProductRepository, ProductRepository>();
+            //services.AddSingleton<IOrderRepository, OrderRepository>();
 
             services.AddScoped<IShoppingCart, eShop.ShoppingCart.LocalStorage.ShoppingCart>();
             services.AddScoped<IShoppingCartStateStore, ShoppingCartStateStore>();
+
+            services.AddTransient<IDataAccess>(sp => new DataAccess(Configuration.GetConnectionString("Default"))); 
+            services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<IOrderRepository, OrderRepository>();
 
             services.AddTransient<IViewProductUseCase, ViewProductUseCase>();
             services.AddTransient<ISearchProductUseCase, SearchProductUseCase>();
